@@ -1,0 +1,15 @@
+
+version: '2'
+services:
+  web:
+    build: .
+    command: bash -c "npm link && swa --from 'DEN' --to 'MBJ' --leave-date '10/01/2017' --return-date '10/08/2017' --leave-time 'anytime' --return-time 'anytime' --fare-type 'dollars' --passengers 2 --individual-deal-price 50 --total-deal-price 120 --interval 5 --daily-update --daily-update-at '25:36' --nonstop"
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./app:/usr/src/app/app:rw
+    environment:
+      - TWILIO_ACCOUNT_SID=""
+      - TWILIO_AUTH_TOKEN=""
+      - TWILIO_PHONE_FROM=""
+      - TWILIO_PHONE_TO=""
